@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/blip_client.iml" filepath="$PROJECT_DIR$/blip_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/blip_client_android.iml" filepath="$PROJECT_DIR$/android/blip_client_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/blip_client_example_android.iml" filepath="$PROJECT_DIR$/example/android/blip_client_example_android.iml" />
+    </modules>
+  </component>
+</project>
