@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 
 import 'blip_client_platform_interface.dart';
@@ -17,13 +19,14 @@ class MethodChannelBlipClient extends BlipClientPlatform {
     String apiKey,
     Options options,
   }) {
-    return _channel.invokeMethod(
-      'openBlipChat',
+    final data = json.encode(
       <String, dynamic>{
         'appKey': apiKey,
         'options': options.toMap(),
       },
     );
+
+    return _channel.invokeMethod('openBlipChat', data);
   }
 
   ///

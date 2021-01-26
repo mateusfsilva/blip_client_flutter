@@ -23,41 +23,47 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    switch call.method {
-    case "openBlipChat":
-      openBlipChat(withParams: call.arguments as! [String: AnyObject])
+    if let params = convertToDictionary(call.arguments as? String) {
+      switch call.method {
+      case "openBlipChat":
+        openBlipChat(withParams: params)
 
-      result(nil)
-    case "closeBlipChat":
-      closeBlipChat()
+        result(nil)
+      case "closeBlipChat":
+        closeBlipChat()
 
-      result(nil)
-    case "getPlatformVersion":
-      result("iOS " + UIDevice.current.systemVersion)
+        result(nil)
+      case "getPlatformVersion":
+        result("iOS " + UIDevice.current.systemVersion)
 
-      result(nil)
-    default:
-      result(nil)
+        result(nil)
+      default:
+        result(nil)
+      }
+    } else {
+      result(false)
     }
   }
 
-  internal func openBlipChat(withParams params: [String: AnyObject]) {
+  internal func openBlipChat(withParams params: [String: Any]) {
     let apiKey = getAPIKey(fromParams: params)
     let blipOptions = makeBlipOoptions(withParams: params)
 
     viewController = MainViewController(apiKey: apiKey, blipOptions: blipOptions)
     navigationController = UINavigationController(rootViewController: viewController!)
+    navigationController!.modalPresentationStyle = .fullScreen
 
-    if let window = UIApplication.shared.windows.first {
-      window.rootViewController = navigationController
-      window.makeKeyAndVisible()
+    if let window = UIApplication.shared.windows.first, let rootViewController = window.rootViewController {
+      rootViewController.present(navigationController!, animated: true, completion: nil)
+      // window.rootViewController = rootViewController
+      // window.makeKeyAndVisible()
     }
   }
 
-  internal func makeBlipOoptions(withParams params: [String: AnyObject]) -> BlipOptions {
-    let _options = params["options"] as! [String: AnyObject]
-    let _authConfig = _options["authConfig"] as! [String: AnyObject]
-    let _account = _options["account"] as? [String: AnyObject]
+  internal func makeBlipOoptions(withParams params: [String: Any]) -> BlipOptions {
+    let _options = params["options"] as! [String: Any]
+    let _authConfig = _options["authConfig"] as! [String: Any]
+    let _account = _options["account"] as? [String: Any]
 
     var authConfig: AuthConfig
     var account: Account
@@ -159,7 +165,7 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
     return blipOptions
   }
 
-  internal func getAPIKey(fromParams params: [String: AnyObject]) -> String {
+  internal func getAPIKey(fromParams params: [String: Any]) -> String {
     let apiKey = params["appKey"] as! String
 
     return apiKey
@@ -167,5 +173,17 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
 
   internal func closeBlipChat() {
     navigationController?.dismiss(animated: true)
+  }
+
+  private func convertToDictionary(_ text: String?) -> [String: Any]? {
+    if let text = text, let data = text.data(using: .utf8) {
+      do {
+        return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+      } catch {
+        //
+      }
+    }
+
+    return nil
   }
 }
