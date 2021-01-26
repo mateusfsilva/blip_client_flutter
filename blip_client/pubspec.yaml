@@ -1,0 +1,32 @@
+name: blip_client
+description: A new flutter plugin project.
+author: Mateus Freitas (mateus@blubybs2.com)
+repository: https://github.com/mateusfsilva
+issue_tracker: https://github.com/mateusfsilva/<repository>/issues
+version: 0.0.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  blip_client_platform_interface:
+    path: ../blip_client_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  effective_dart: ^1.3.0
+
+environment:
+  sdk: ">=2.10.4 <3.0.0"
+  flutter: ">=1.22.5"
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.blubybs2.blip_client
+        pluginClass: BlipClientPlugin
+      ios:
+        pluginClass: BlipClientPlugin

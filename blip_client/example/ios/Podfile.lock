@@ -1,0 +1,30 @@
+PODS:
+  - blip_client (0.0.1):
+    - BlipChat
+    - Flutter
+  - BlipChat (2.2.4)
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - blip_client (from `.symlinks/plugins/blip_client/ios`)
+  - BlipChat
+  - Flutter (from `Flutter`)
+
+SPEC REPOS:
+  trunk:
+    - BlipChat
+
+EXTERNAL SOURCES:
+  blip_client:
+    :path: ".symlinks/plugins/blip_client/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  blip_client: bc317e6cee3af7c1d8b54ed47ed8def2796da4f2
+  BlipChat: 6765efcbbbf7586358977eddf384fdfb62c70812
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+
+PODFILE CHECKSUM: fa5875cd7d2503ccbac33b136151a0918c24e5a4
+
+COCOAPODS: 1.10.1
