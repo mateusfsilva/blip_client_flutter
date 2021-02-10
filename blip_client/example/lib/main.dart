@@ -65,6 +65,8 @@ class _MyAppState extends State<MyApp> {
       account: account,
       customCommonUrl: 'https://chat.blip.ai/',
       windowTitle: 'Blip Flutter Client - Anonymous',
+      appBarBackgroundColor: '#3333CCFF',
+      appBarForegroundColor: '#FFFFFFFF',
     );
 
     blipClient = BlipClient(
@@ -121,6 +123,8 @@ class _MyAppState extends State<MyApp> {
       account: account,
       customCommonUrl: 'https://chat.blip.ai/',
       windowTitle: 'Blip Flutter Client - Authenticated',
+      appBarBackgroundColor: '#3333CCFF',
+      appBarForegroundColor: '#FFFFFFFF',
     );
 
     blipClient = BlipClient(

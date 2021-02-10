@@ -20,6 +20,8 @@ class Options extends Equatable {
     this.customCommonUrl,
     this.customWidgetUrl,
     this.windowTitle,
+    this.appBarBackgroundColor,
+    this.appBarForegroundColor,
   });
 
   /// AuthType for BlipChat
@@ -40,6 +42,14 @@ class Options extends Equatable {
   /// Title for BlipChat controller
   final String windowTitle;
 
+  /// Color of the AppBar
+  /// Format hex #FFFFFF
+  final String appBarBackgroundColor;
+
+  /// Color of the AppBar Title
+  /// Format hex #FFFFFF
+  final String appBarForegroundColor;
+
   /// Return a Map representing the object.
   Map<String, dynamic> toMap() => {
         'authConfig': authConfig.toMap(),
@@ -48,6 +58,8 @@ class Options extends Equatable {
         'customCommonUrl': customCommonUrl,
         'customWidgetUrl': customWidgetUrl,
         'windowTitle': windowTitle,
+        'appBarBackgroundColor': appBarBackgroundColor,
+        'appBarForegroundColor': appBarForegroundColor,
       };
 
   @override
@@ -58,6 +70,8 @@ class Options extends Equatable {
         customCommonUrl,
         customWidgetUrl,
         windowTitle,
+        appBarBackgroundColor,
+        appBarForegroundColor,
       ];
 
   @override

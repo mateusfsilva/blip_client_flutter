@@ -5,10 +5,16 @@ import BlipChat
 public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
   var viewController: UIViewController?
   var navigationController: UINavigationController?
+  var _backgroundColor: UIColor
+  var _foregroundColor: UIColor
 
   init(viewController: UIViewController?, navigationController: UINavigationController?) {
     self.viewController = viewController
     self.navigationController = navigationController
+    self._backgroundColor = UIColor.white
+    self._foregroundColor = UIColor.black
+
+    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
   }
 
   convenience override init() {
@@ -52,6 +58,15 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
     viewController = MainViewController(apiKey: apiKey, blipOptions: blipOptions)
     navigationController = UINavigationController(rootViewController: viewController!)
     navigationController!.modalPresentationStyle = .fullScreen
+
+    navigationController!.navigationBar.barTintColor = _backgroundColor
+    navigationController!.navigationBar.isTranslucent = false
+
+    navigationController!.navigationBar.tintColor = _foregroundColor
+    navigationController!.navigationBar.titleTextAttributes = [
+      NSAttributedString.Key.backgroundColor: _backgroundColor,
+      NSAttributedString.Key.foregroundColor: _foregroundColor
+    ]
 
     if let window = UIApplication.shared.windows.first, let rootViewController = window.rootViewController {
       rootViewController.present(navigationController!, animated: true, completion: nil)
@@ -162,6 +177,16 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
       blipOptions.customCommonUrl = customCommonUrl
     }
 
+    // UINavigationBar Color
+    if let backgroundColor = _options["appBarBackgroundColor"] as? String, let color = UIColor(hex: backgroundColor) {
+      self._backgroundColor = color
+    }
+
+    // UINavigationBar Title Color
+    if let foregroundColor = _options["appBarForegroundColor"] as? String, let color = UIColor(hex: foregroundColor) {
+      self._foregroundColor = color
+    }
+
     return blipOptions
   }
 
@@ -172,7 +197,7 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
   }
 
   internal func closeBlipChat() {
-    navigationController?.dismiss(animated: true)
+    navigationController?.dismiss(animated: true, completion: nil)
   }
 
   private func convertToDictionary(_ text: String?) -> [String: Any]? {
@@ -181,6 +206,34 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
         return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
       } catch {
         //
+      }
+    }
+
+    return nil
+  }
+}
+
+extension UIColor {
+  public convenience init?(hex: String) {
+    let r, g, b, a: CGFloat
+
+    if hex.hasPrefix("#") {
+      let start = hex.index(hex.startIndex, offsetBy: 1)
+      let hexColor = String(hex[start...])
+
+      if hexColor.count == 8 {
+        let scanner = Scanner(string: hexColor)
+        var hexNumber: UInt64 = 0
+
+        if scanner.scanHexInt64(&hexNumber) {
+          r = CGFloat((hexNumber & 0xff000000) >> 24) / 255
+          g = CGFloat((hexNumber & 0x00ff0000) >> 16) / 255
+          b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
+          a = CGFloat(hexNumber & 0x000000ff) / 255
+
+          self.init(red: r, green: g, blue: b, alpha: a)
+          return
+        }
       }
     }
 
