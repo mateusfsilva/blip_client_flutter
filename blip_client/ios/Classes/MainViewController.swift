@@ -4,6 +4,7 @@ import BlipChat
 class MainViewController: UIViewController {
   private let apiKey: String
   private let blipOptions: BlipOptions
+  private var chatWasOpened: Bool = false
 
   init(apiKey: String, blipOptions: BlipOptions) {
     self.apiKey = apiKey
@@ -26,5 +27,19 @@ class MainViewController: UIViewController {
     } catch {
       print (error.localizedDescription)
     }
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+
+    if (chatWasOpened) {
+      self.presentingViewController?.dismiss(animated: true, completion: nil)
+    } else {
+      chatWasOpened = true
+    }
+  }
+
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
   }
 }

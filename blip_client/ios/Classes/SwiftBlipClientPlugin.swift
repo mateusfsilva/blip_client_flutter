@@ -68,8 +68,6 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
 
     if let window = UIApplication.shared.windows.first, let rootViewController = window.rootViewController {
       rootViewController.present(navigationController!, animated: true, completion: nil)
-      // window.rootViewController = rootViewController
-      // window.makeKeyAndVisible()
     }
   }
 

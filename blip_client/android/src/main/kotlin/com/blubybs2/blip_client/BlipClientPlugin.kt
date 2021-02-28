@@ -3,8 +3,6 @@ package com.blubybs2.blip_client
 import android.app.Activity
 import android.content.Context
 import androidx.annotation.NonNull
-import java.net.URI
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -17,7 +15,9 @@ import net.take.blipchat.BlipClient
 import net.take.blipchat.models.Account
 import net.take.blipchat.models.AuthConfig
 import net.take.blipchat.models.BlipOptions
-import org.json.*
+import org.json.JSONException
+import org.json.JSONObject
+import java.net.URI
 
 /** BlipClientPlugin */
 class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -60,7 +60,7 @@ class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     channel.setMethodCallHandler(null)
   }
 
-  override fun onAttachedToActivity(@NonNull binding: ActivityPluginBinding) { // fun onAttachedToActivity(@NonNull binding: ActivityPluginBinding) {
+  override fun onAttachedToActivity(@NonNull binding: ActivityPluginBinding) {
     this.activity = binding.activity
   }
 
