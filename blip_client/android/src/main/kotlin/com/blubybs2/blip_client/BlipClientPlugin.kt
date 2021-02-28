@@ -12,41 +12,47 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
 import net.take.blipchat.AuthType
 import net.take.blipchat.BlipClient
 import net.take.blipchat.models.Account
-import net.take.blipchat.models.Account.Gender.MALE
-import net.take.blipchat.models.Account.Gender.FEMALE
 import net.take.blipchat.models.AuthConfig
 import net.take.blipchat.models.BlipOptions
+import org.json.*
 
 /** BlipClientPlugin */
-class BlipClientPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
+class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
-  private lateinit var channel : MethodChannel
-  private lateinit var context : Context
+  private lateinit var channel: MethodChannel
+  private lateinit var context: Context
   private lateinit var activity: Activity
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "plugins.blubybs2.com/blip_client")
     channel.setMethodCallHandler(this)
 
-    context = flutterPluginBinding.applicationContext
+    this.context = flutterPluginBinding.applicationContext
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "openBlipChat") {
-      openBlipChat(call.arguments as Map<String, Any>)
-    } else if (call.method == "closeBlipChat") {
-      closeBlipChat()
-    } else if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else {
-      result.notImplemented()
+    try {
+      val jsonObject = JSONObject(call.arguments as String);
+
+      if (call.method == "openBlipChat") {
+        openBlipChat(jsonObject)
+
+        result.success(true)
+      } else if (call.method == "closeBlipChat") {
+        closeBlipChat()
+      } else if (call.method == "getPlatformVersion") {
+        result.success("Android ${android.os.Build.VERSION.RELEASE}")
+      } else {
+        result.notImplemented()
+      }
+    } catch (e: JSONException) {
+      result.success(false)
     }
   }
 
@@ -55,7 +61,7 @@ class BlipClientPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   override fun onAttachedToActivity(@NonNull binding: ActivityPluginBinding) { // fun onAttachedToActivity(@NonNull binding: ActivityPluginBinding) {
-    activity = binding.activity
+    this.activity = binding.activity
   }
 
   override fun onDetachedFromActivity() {
@@ -70,103 +76,111 @@ class BlipClientPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     TODO("Not yet implemented")
   }
 
-  private fun openBlipChat(params: Map<String, Any>) {
+  private fun openBlipChat(params: JSONObject) {
     val apiKey = getAPIKey(params)
     val blipOptions = makeBlipOoptions(params)
 
-    BlipClient.openBlipThread(context, apiKey, blipOptions)
+    // BlipClient.openBlipThread(context, apiKey, blipOptions)
+    BlipClient.openBlipThread(activity.application.applicationContext, apiKey, blipOptions)
   }
 
-  private fun makeBlipOoptions(@NonNull params: Map<String, Any>): BlipOptions {
-    val _options = params["options"] as Map<String, Any>
-    val _authConfig = _options["authConfig"] as Map<String, Any>
-    val _account = _options["account"] as Map<String, Any>
+  private fun makeBlipOoptions(@NonNull params: JSONObject): BlipOptions {
+    val _options = params.getJSONObject("options")
+    val _authConfig = _options.getJSONObject("authConfig")
+    val _account = _options.getJSONObject("account")
 
     var authConfig: AuthConfig
     var account: Account
 
-    if (_authConfig["authType"] == 0) {
+    if (_authConfig.getInt("authType") == 0) {
       authConfig = AuthConfig(AuthType.Guest)
     } else {
       authConfig = AuthConfig(
-        AuthType.Dev,
-        _authConfig["userIdentity"] as String,
-        _authConfig["userPassword"] as String
+          AuthType.Dev,
+          _authConfig.getString("userIdentity"),
+          _authConfig.getString("userPassword")
       )
     }
 
     account = Account()
 
-    if (_account["fullName"] != null) {
-      account.fullName = _account["fullName"] as String
+    if (_account.has("fullName") && !_account.isNull("fullName")) {
+      account.fullName = _account.getString("fullName")
     }
 
-    if (_account["address"] != null) {
-      account.address = _account["address"] as String
+    if (_account.has("address") && !_account.isNull("address")) {
+      account.address = _account.getString("address")
     }
 
-    if (_account["city"] != null) {
-      account.city = _account["city"] as String
+    if (_account.has("city") && !_account.isNull("city")) {
+      account.city = _account.getString("city")
     }
 
-    if (_account["email"] != null) {
-      account.email = _account["email"] as String
+    if (_account.has("email") && !_account.isNull("email")) {
+      account.email = _account.getString("email")
     }
 
-    if (_account["phoneNumber"] != null) {
-      account.phoneNumber = _account["phoneNumber"] as String
+    if (_account.has("phoneNumber") && !_account.isNull("phoneNumber")) {
+      account.phoneNumber = _account.getString("phoneNumber")
     }
 
-    if (_account["photoUri"] != null) {
-      account.photoUri = URI.create(_account["photoUri"] as String)
+    if (_account.has("photoUri") && !_account.isNull("photoUri")) {
+      account.photoUri = URI.create(_account.getString("photoUri"))
     }
 
-    if (_account["cellPhoneNumber"] != null) {
-      account.cellPhoneNumber = _account["cellPhoneNumber"] as String
+    if (_account.has("cellPhoneNumber") && !_account.isNull("cellPhoneNumber")) {
+      account.cellPhoneNumber = _account.getString("cellPhoneNumber")
     }
 
-    // if (_account["gender"] != null) {
-    //   if ((_account["gender"] as Int) == 0) {
-    //     account.gender = Gender.MALE
-    //   } else {
-    //     account.gender = Gender.FEMALE
-    //   }
-    // }
+//    if (_account.has("gender") && _account.isNull("")) {
+//      if ((_account["gender"] as Int) == 0) {
+//        account.gender = Gender.MALE
+//      } else {
+//        account.gender = Gender::FEMALE
+//      }
+//    }
 
-    if (_account["culture"] != null) {
-      account.culture = _account["culture"] as String
+    if (_account.has("culture") && !_account.isNull("culture")) {
+      account.culture = _account.getString("culture")
     }
 
-    if (_account["extras"] != null) {
-      account.extras = _account["extras"] as Map<String, String>
+    if (_account.has("extras") && !_account.isNull("extras")) {
+      val obj = _account.getJSONObject("extras")
+      val _extras = mutableMapOf<String, String>()
+
+      for (extra in obj.keys()) {
+        _extras.put(extra, obj.getString(extra))
+      }
+
+      account.extras = _extras
     }
 
-    if (_account["password"] != null) {
-      account.password = _account["password"] as String
+    if (_account.has("password") && !_account.isNull("password")) {
+      account.password = _account.getString("password")
     }
 
-    if (_account["oldPassword"] != null) {
-      account.oldPassword = _account["oldPassword"] as String
+    if (_account.has("oldPassword") && !_account.isNull("oldPassword")) {
+      account.oldPassword = _account.getString("oldPassword")
     }
 
-    if (_account["isTemporary"] != null) {
-      account.isTemporary = _account["isTemporary"] as Boolean
+    if (_account.has("isTemporary") && !_account.isNull("isTemporary")) {
+      account.isTemporary = _account.getBoolean("isTemporary")
     }
 
-    if (_account["allowGuestSender"] != null) {
-      account.allowAnonymousSender = _account["allowGuestSender"] as Boolean
+    if (_account.has("allowGuestSender") && !_account.isNull("allowGuestSender")) {
+      account.allowAnonymousSender = _account.getBoolean("allowGuestSender")
     }
 
-    if (_account["allowUnknownSender"] != null) {
-      account.allowUnknownSender = _account["allowUnknownSender"] as Boolean
+    if (_account.has("allowUnknownSender") && !_account.isNull("allowUnknownSender")) {
+      account.allowUnknownSender = _account.getBoolean("allowUnknownSender")
     }
 
-    if (_account["storeMessageContent"] != null) {
-      account.storeMessageContent = _account["storeMessageContent"] as Boolean
+    if (_account.has("storeMessageContent") && !_account.isNull("storeMessageContent")) {
+      account.storeMessageContent = _account.getBoolean("storeMessageContent")
     }
 
-    if (_account["encryptMessageContent"] != null) {
-      account.encryptMessageContent = _account["encryptMessageContent"] as Boolean
+    if (_account.has("encryptMessageContent") && !_account.isNull("encryptMessageContent")) {
+      account.encryptMessageContent = _account.getBoolean("encryptMessageContent")
     }
 
     val options = BlipOptions()
@@ -176,8 +190,8 @@ class BlipClientPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     return options
   }
 
-  private fun getAPIKey(params: Map<String, Any>): String {
-    val apiKey = params["appKey"] as String
+  private fun getAPIKey(params: JSONObject): String {
+    val apiKey = params.getString("appKey")
 
     return apiKey
   }

@@ -34,17 +34,15 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
       case "openBlipChat":
         openBlipChat(withParams: params)
 
-        result(nil)
+        result(true)
       case "closeBlipChat":
         closeBlipChat()
 
         result(nil)
       case "getPlatformVersion":
         result("iOS " + UIDevice.current.systemVersion)
-
-        result(nil)
       default:
-        result(nil)
+        result(FlutterError(code: "UNAVAILABLE", message: nil, details: nil))
       }
     } else {
       result(false)
