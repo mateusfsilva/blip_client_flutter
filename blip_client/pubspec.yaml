@@ -10,7 +10,10 @@ dependencies:
     sdk: flutter
   
   blip_client_platform_interface:
-    path: ../blip_client_platform_interface
+    git:
+      url: https://github.com/mateusfsilva/blip_client_flutter.git
+      ref: 08ba9e490a19b0114261831397aaad909b59ee16
+      path: blip_client_platform_interface
 
 dev_dependencies:
   flutter_test:

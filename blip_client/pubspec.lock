@@ -11,9 +11,11 @@ packages:
   blip_client_platform_interface:
     dependency: "direct main"
     description:
-      path: "/Users/mateusfsilva/development/Blu/blip_client/blip_client_platform_interface"
-      relative: false
-    source: path
+      path: blip_client_platform_interface
+      ref: "08ba9e490a19b0114261831397aaad909b59ee16"
+      resolved-ref: "08ba9e490a19b0114261831397aaad909b59ee16"
+      url: "https://github.com/mateusfsilva/blip_client_flutter.git"
+    source: git
     version: "0.0.1"
   boolean_selector:
     dependency: transitive
