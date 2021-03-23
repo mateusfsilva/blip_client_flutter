@@ -50,6 +50,30 @@ class Options extends Equatable {
   /// Format hex #FFFFFF
   final String appBarForegroundColor;
 
+  /// Create a copy of the object instance.
+  Options copyWith({
+    AuthConfig authConfig,
+    Account account,
+    ConnectionDataConfig connectionDataConfig,
+    String customCommonUrl,
+    String customWidgetUrl,
+    String windowTitle,
+    String appBarBackgroundColor,
+    String appBarForegroundColor,
+  }) =>
+      Options(
+        authConfig: authConfig ?? this.authConfig,
+        account: account ?? this.account,
+        connectionDataConfig: connectionDataConfig ?? this.connectionDataConfig,
+        customCommonUrl: customCommonUrl ?? this.customCommonUrl,
+        customWidgetUrl: customWidgetUrl ?? this.customWidgetUrl,
+        windowTitle: windowTitle ?? this.windowTitle,
+        appBarBackgroundColor:
+            appBarBackgroundColor ?? this.appBarBackgroundColor,
+        appBarForegroundColor:
+            appBarForegroundColor ?? this.appBarForegroundColor,
+      );
+
   /// Return a Map representing the object.
   Map<String, dynamic> toMap() => {
         'authConfig': authConfig.toMap(),
