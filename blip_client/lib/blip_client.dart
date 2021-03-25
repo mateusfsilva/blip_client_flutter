@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:blip_client_platform_interface/method_channel_blip_client.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
 
 export 'package:blip_client_platform_interface/options.dart';
 
 ///
-class BlipClient {
+class BlipClient extends Equatable {
   ///
   const BlipClient({
     this.apiKey,
@@ -46,4 +47,10 @@ class BlipClient {
   Future<String> getPlatformVersion() async {
     return await MethodChannelBlipClient().getPlatformVersion();
   }
+
+  @override
+  List<Object> get props => [apiKey, options];
+
+  @override
+  bool get stringify => true;
 }

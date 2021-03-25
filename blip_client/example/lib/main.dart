@@ -2,8 +2,7 @@ import 'package:blip_client/blip_client.dart';
 import 'package:flutter/material.dart';
 
 /// API key to use the Blip.
-const String apiKey =
-    'Ymx1MToyYzUwNGQ3YS0xMDRmLTRiYTAtYjM0Yi05ODZmNGZlNjNhMGU=';
+const String apiKey = 'MyBlipKey=';
 
 void main() {
   runApp(MyApp());
@@ -86,18 +85,18 @@ class _MyAppState extends State<MyApp> {
 
     var account = Account();
     account = account.copyWith(
-      fullName: 'Mateus Gustavo de Freitas e Silva',
+      fullName: 'Blu by BS2',
     );
     account = account.copyWith(
       address: 'Av. Raja Gabaglia, 1143, 15˚ andar, '
-          'bairro Luxemburgo, Belo Horizonte/MG – CEP 30380-403',
+          'bairro Luxemburgo, MG – CEP 30380-403',
     );
     account = account.copyWith(city: 'Belo Horizonte');
-    account = account.copyWith(email: 'mateusfsilva@gmail.com');
+    account = account.copyWith(email: 'meajuda@blubybs2.com.com');
     account = account.copyWith(phoneNumber: '0800 545 5252');
     account = account.copyWith(
       photoUri: Uri.parse(
-        'https://www.gravatar.com/avatar/12d0510da7e0e768eac785e1b0afe373',
+        'https://blubybs2.com/wp-content/uploads/2019/12/logo-blu-150x150.png',
       ),
     );
     account = account.copyWith(cellPhoneNumber: '+55 (31) 9 9630-0244');

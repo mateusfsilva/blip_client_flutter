@@ -19,8 +19,8 @@ packages:
     dependency: transitive
     description:
       path: blip_client_platform_interface
-      ref: "08ba9e490a19b0114261831397aaad909b59ee16"
-      resolved-ref: "08ba9e490a19b0114261831397aaad909b59ee16"
+      ref: "59f92d89bfa61c6f2f5883a2d6289a25b7242279"
+      resolved-ref: "59f92d89bfa61c6f2f5883a2d6289a25b7242279"
       url: "https://github.com/mateusfsilva/blip_client_flutter.git"
     source: git
     version: "0.0.1"

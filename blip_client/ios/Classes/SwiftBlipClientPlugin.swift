@@ -52,8 +52,8 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
   internal func openBlipChat(withParams params: [String: Any]) {
     let apiKey = getAPIKey(fromParams: params)
     let blipOptions = makeBlipOoptions(withParams: params)
-
-    viewController = MainViewController(apiKey: apiKey, blipOptions: blipOptions)
+  
+    viewController = MainViewController(apiKey: apiKey, blipOptions: blipOptions, backgroundColor: _backgroundColor)
     navigationController = UINavigationController(rootViewController: viewController!)
     navigationController!.modalPresentationStyle = .fullScreen
 
