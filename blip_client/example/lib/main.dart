@@ -20,24 +20,24 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
-          backgroundColor: Color(0xFFF9F9FA),
+          backgroundColor: const Color(0xFFF9F9FA),
           appBar: AppBar(
-            backgroundColor: Color(0xFF3333CC),
-            title: Text('Blip Client Flutter'),
+            backgroundColor: const Color(0xFF3333CC),
+            title: const Text('Blip Client Flutter'),
           ),
           body: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                FlatButton(
-                  child: Text('Open chat as anonymous user'),
+                TextButton(
                   onPressed: _openAnonymousUser,
+                  child: const Text('Open chat as anonymous user'),
                 ),
-                SizedBox(height: 16.0),
-                FlatButton(
-                  child: Text('Open chat as authenticated user'),
+                const SizedBox(height: 16.0),
+                TextButton(
                   onPressed: _openAuthenticatedUser,
+                  child: const Text('Open chat as authenticated user'),
                 ),
               ],
             ),
@@ -47,11 +47,11 @@ class _MyAppState extends State<MyApp> {
       );
 
   void _openAnonymousUser() {
-    final authConfig = AuthConfig(
+    const authConfig = AuthConfig(
       authType: AuthType.guest,
     );
 
-    var account = Account();
+    var account = const Account();
     account = account.copyWith(encryptMessageContent: true);
     account = account.copyWith(
       extras: {
@@ -77,13 +77,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _openAuthenticatedUser() {
-    final authConfig = AuthConfig(
+    const authConfig = AuthConfig(
       authType: AuthType.dev,
       userIdentity: '9dd03fe2-35d8-4f6f-8139-a03b4317c1f9',
       userPassword: 'b95acc5d1d037edb68d96a7bfe825cad',
     );
 
-    var account = Account();
+    var account = const Account();
     account = account.copyWith(
       fullName: 'Blu by BS2',
     );
@@ -92,14 +92,14 @@ class _MyAppState extends State<MyApp> {
           'bairro Luxemburgo, MG – CEP 30380-403',
     );
     account = account.copyWith(city: 'Belo Horizonte');
-    account = account.copyWith(email: 'meajuda@blubybs2.com.com');
+    account = account.copyWith(email: 'user@blubybs2.com');
     account = account.copyWith(phoneNumber: '0800 545 5252');
     account = account.copyWith(
       photoUri: Uri.parse(
         'https://blubybs2.com/wp-content/uploads/2019/12/logo-blu-150x150.png',
       ),
     );
-    account = account.copyWith(cellPhoneNumber: '+55 (31) 9 9630-0244');
+    account = account.copyWith(cellPhoneNumber: '+55 (31) 9 1234-5678');
     account = account.copyWith(gender: Gender.male);
     account = account.copyWith(timezone: -3);
     account = account.copyWith(culture: 'pt_BR');

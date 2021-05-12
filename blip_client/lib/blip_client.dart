@@ -25,14 +25,14 @@ class BlipClient extends Equatable {
 
   ///
   static Future<String> get platformVersion async {
-    final version = await _channel.invokeMethod('getPlatformVersion');
+    final version = await _channel.invokeMethod('getPlatformVersion') as String;
 
     return version;
   }
 
   ///
   Future<void> openBlipChat() async {
-    return await MethodChannelBlipClient().openBlipChat(
+    return MethodChannelBlipClient().openBlipChat(
       apiKey: apiKey,
       options: options,
     );
@@ -40,12 +40,12 @@ class BlipClient extends Equatable {
 
   ///
   Future<void> closeBlipChat() async {
-    return await MethodChannelBlipClient().closeBlipChat();
+    return MethodChannelBlipClient().closeBlipChat();
   }
 
   ///
   Future<String> getPlatformVersion() async {
-    return await MethodChannelBlipClient().getPlatformVersion();
+    return MethodChannelBlipClient().getPlatformVersion();
   }
 
   @override

@@ -65,23 +65,22 @@ class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   override fun onDetachedFromActivity() {
-    TODO("Not yet implemented")
+    this.activity = null
   }
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    TODO("Not yet implemented")
+    this.activity = binding.activity
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    TODO("Not yet implemented")
+    this.activity = null
   }
 
   private fun openBlipChat(params: JSONObject) {
     val apiKey = getAPIKey(params)
     val blipOptions = makeBlipOoptions(params)
 
-    // BlipClient.openBlipThread(context, apiKey, blipOptions)
-    BlipClient.openBlipThread(activity.application.applicationContext, apiKey, blipOptions)
+    BlipClient.openBlipThread(this.context, apiKey, blipOptions)
   }
 
   private fun makeBlipOoptions(@NonNull params: JSONObject): BlipOptions {

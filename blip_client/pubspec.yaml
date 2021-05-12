@@ -3,7 +3,7 @@ description: A new flutter plugin project.
 author: Mateus Freitas (mateus@blubybs2.com)
 repository: https://github.com/mateusfsilva
 issue_tracker: https://github.com/mateusfsilva/<repository>/issues
-version: 0.0.1
+version: 0.0.2
 
 dependencies:
   flutter:
@@ -12,14 +12,14 @@ dependencies:
   blip_client_platform_interface:
     git:
       url: https://github.com/mateusfsilva/blip_client_flutter.git
-      ref: 59f92d89bfa61c6f2f5883a2d6289a25b7242279
+      ref: e007e267290923d2783af4796bf0655c1118f2ec
       path: blip_client_platform_interface
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  effective_dart: ^1.3.0
+  lint: ^1.5.3
 
 environment:
   sdk: ">=2.10.4 <3.0.0"
