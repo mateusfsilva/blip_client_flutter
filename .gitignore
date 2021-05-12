@@ -1,2 +1,6 @@
 
 .DS_Store
+
+blip_client_platform_interface/.dart_tool/package_config_subset
+
+blip_client_platform_interface/.dart_tool/version
