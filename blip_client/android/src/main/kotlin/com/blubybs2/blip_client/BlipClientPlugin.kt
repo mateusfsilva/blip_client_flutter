@@ -65,7 +65,7 @@ class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   override fun onDetachedFromActivity() {
-    this.activity = null
+    // this.activity = null
   }
 
   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
@@ -73,7 +73,7 @@ class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   override fun onDetachedFromActivityForConfigChanges() {
-    this.activity = null
+    // this.activity = null
   }
 
   private fun openBlipChat(params: JSONObject) {
