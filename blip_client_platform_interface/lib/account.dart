@@ -13,6 +13,59 @@ enum Gender {
 /// Represents an user account information.
 @immutable
 class Account extends Equatable {
+  /// Create a new object.
+  const Account({
+    this.fullName,
+    this.address,
+    this.city,
+    this.email,
+    this.phoneNumber,
+    this.photoUri,
+    this.cellPhoneNumber,
+    this.gender,
+    this.timezone,
+    this.culture,
+    this.extras,
+    this.isTemporary,
+    this.password,
+    this.oldPassword,
+    this.inboxSize,
+    this.allowGuestSender,
+    this.allowUnknownSender,
+    this.storeMessageContent,
+    this.encryptMessageContent,
+  });
+
+  /// Create an Account object from a json.
+  factory Account.fromMap(Map<String, dynamic> map) {
+    if (map == null) {
+      return null;
+    }
+
+    return Account(
+      fullName: map['fullName'] as String,
+      address: map['address'] as String,
+      city: map['city'] as String,
+      email: map['email'] as String,
+      phoneNumber: map['phoneNumber'] as String,
+      photoUri: Uri.tryParse(map['photoUri'] as String),
+      cellPhoneNumber: map['cellPhoneNumber'] as String,
+      gender:
+          map['gender'] != null ? Gender.values[map['gender'] as int] : null,
+      timezone: map['timezone'] as int,
+      culture: map['culture'] as String,
+      extras: Map<String, String>.from(map['extras'] as Map<String, dynamic>),
+      isTemporary: map['isTemporary'] as bool,
+      password: map['password'] as String,
+      oldPassword: map['oldPassword'] as String,
+      inboxSize: map['inboxSize'] as int,
+      allowGuestSender: map['allowGuestSender'] as bool,
+      allowUnknownSender: map['allowUnknownSender'] as bool,
+      storeMessageContent: map['storeMessageContent'] as bool,
+      encryptMessageContent: map['encryptMessageContent'] as bool,
+    );
+  }
+
   /// The user full name.
   final String fullName;
 
@@ -77,56 +130,6 @@ class Account extends Equatable {
   /// Indicates if the content of messages from this account should be
   /// encrypted in the server.
   final bool encryptMessageContent;
-
-  /// Create a new object.
-  const Account({
-    this.fullName,
-    this.address,
-    this.city,
-    this.email,
-    this.phoneNumber,
-    this.photoUri,
-    this.cellPhoneNumber,
-    this.gender,
-    this.timezone,
-    this.culture,
-    this.extras,
-    this.isTemporary,
-    this.password,
-    this.oldPassword,
-    this.inboxSize,
-    this.allowGuestSender,
-    this.allowUnknownSender,
-    this.storeMessageContent,
-    this.encryptMessageContent,
-  });
-
-  /// Create an Account object from a json.
-  factory Account.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
-    return Account(
-      fullName: map['fullName'],
-      address: map['address'],
-      city: map['city'],
-      email: map['email'],
-      phoneNumber: map['phoneNumber'],
-      photoUri: Uri.tryParse(map['photoUri']),
-      cellPhoneNumber: map['cellPhoneNumber'],
-      gender: map['gender'] != null ? Gender.values[map['gender']] : null,
-      timezone: map['timezone'],
-      culture: map['culture'],
-      extras: Map<String, String>.from(map['extras']),
-      isTemporary: map['isTemporary'],
-      password: map['password'],
-      oldPassword: map['oldPassword'],
-      inboxSize: map['inboxSize'],
-      allowGuestSender: map['allowGuestSender'],
-      allowUnknownSender: map['allowUnknownSender'],
-      storeMessageContent: map['storeMessageContent'],
-      encryptMessageContent: map['encryptMessageContent'],
-    );
-  }
 
   /// Return a Map representing the object.
   Map<String, dynamic> toMap() => {

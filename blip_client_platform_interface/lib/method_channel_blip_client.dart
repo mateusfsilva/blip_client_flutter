@@ -39,7 +39,7 @@ class MethodChannelBlipClient extends BlipClientPlatform {
   @override
   Future<String> getPlatformVersion() {
     return _channel.invokeMethod('getPlatformVersion').then(
-          (version) => version,
+          (version) => version as String,
         );
   }
 }
