@@ -12,18 +12,18 @@ dependencies:
   blip_client_platform_interface:
     git:
       url: https://github.com/mateusfsilva/blip_client_flutter.git
-      ref: e007e267290923d2783af4796bf0655c1118f2ec
+      ref: 57247912871a90ec42a059682c0aa84dfda9abd0
       path: blip_client_platform_interface
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  lint: ^1.5.3
+  lint: ^1.4.0-dev.d210.1
 
 environment:
   sdk: ">=2.10.4 <3.0.0"
-  flutter: ">=1.22.5"
+  flutter: "<=1.22.6"
 
 flutter:
   plugin:

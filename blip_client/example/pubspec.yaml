@@ -22,7 +22,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   
-  lint: ^1.5.3
+  lint: ^1.4.0-dev.d210.1
 
 flutter:
   uses-material-design: true
