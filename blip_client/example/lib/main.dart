@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 /// API key to use the Blip.
 const String apiKey = 'MyBlipKey=';
+const String appBarBackgroundColor = '#3333CCFF';
+const String appBarForegroundColor = '#FFFFFFFF';
 
 void main() {
   runApp(MyApp());
@@ -64,8 +66,8 @@ class _MyAppState extends State<MyApp> {
       account: account,
       customCommonUrl: 'https://chat.blip.ai/',
       windowTitle: 'Blip Flutter Client - Anonymous',
-      appBarBackgroundColor: '#3333CCFF',
-      appBarForegroundColor: '#FFFFFFFF',
+      appBarBackgroundColor: appBarBackgroundColor,
+      appBarForegroundColor: appBarForegroundColor,
     );
 
     blipClient = BlipClient(
@@ -122,8 +124,8 @@ class _MyAppState extends State<MyApp> {
       account: account,
       customCommonUrl: 'https://chat.blip.ai/',
       windowTitle: 'Blip Flutter Client - Authenticated',
-      appBarBackgroundColor: '#3333CCFF',
-      appBarForegroundColor: '#FFFFFFFF',
+      appBarBackgroundColor: appBarBackgroundColor,
+      appBarForegroundColor: appBarForegroundColor,
     );
 
     blipClient = BlipClient(

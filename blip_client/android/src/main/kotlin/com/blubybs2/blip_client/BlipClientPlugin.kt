@@ -20,14 +20,13 @@ import org.json.JSONObject
 import java.net.URI
 
 /** BlipClientPlugin */
-class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
+class BlipClientPlugin : FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel: MethodChannel
   private lateinit var context: Context
-  private lateinit var activity: Activity
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "plugins.blubybs2.com/blip_client")
@@ -60,27 +59,11 @@ class BlipClientPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     channel.setMethodCallHandler(null)
   }
 
-  override fun onAttachedToActivity(@NonNull binding: ActivityPluginBinding) {
-    this.activity = binding.activity
-  }
-
-  override fun onDetachedFromActivity() {
-    // this.activity = null
-  }
-
-  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-    this.activity = binding.activity
-  }
-
-  override fun onDetachedFromActivityForConfigChanges() {
-    // this.activity = null
-  }
-
   private fun openBlipChat(params: JSONObject) {
     val apiKey = getAPIKey(params)
     val blipOptions = makeBlipOoptions(params)
 
-    BlipClient.openBlipThread(this.context, apiKey, blipOptions)
+    BlipClient.openBlipThread(this.context, apiKey, blipOptions, true)
   }
 
   private fun makeBlipOoptions(@NonNull params: JSONObject): BlipOptions {

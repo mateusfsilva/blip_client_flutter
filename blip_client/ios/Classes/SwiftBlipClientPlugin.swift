@@ -14,7 +14,7 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
     self._backgroundColor = UIColor.white
     self._foregroundColor = UIColor.black
 
-    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+    // UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
   }
 
   convenience override init() {
