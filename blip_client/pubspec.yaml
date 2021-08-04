@@ -12,7 +12,7 @@ dependencies:
   blip_client_platform_interface:
     git:
       url: https://github.com/mateusfsilva/blip_client_flutter.git
-      ref: 57247912871a90ec42a059682c0aa84dfda9abd0
+      ref: e46286400f5083d52b9a8fcc7b2baf78addc1dae
       path: blip_client_platform_interface
 
 dev_dependencies:

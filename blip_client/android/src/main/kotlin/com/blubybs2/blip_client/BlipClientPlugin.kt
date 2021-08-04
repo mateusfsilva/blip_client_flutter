@@ -1,11 +1,8 @@
 package com.blubybs2.blip_client
 
-import android.app.Activity
 import android.content.Context
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.embedding.engine.plugins.activity.ActivityAware
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
@@ -29,7 +26,7 @@ class BlipClientPlugin : FlutterPlugin, MethodCallHandler {
   private lateinit var context: Context
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "plugins.blubybs2.com/blip_client")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "plugins.blu.bs2.com/blip-client")
     channel.setMethodCallHandler(this)
 
     this.context = flutterPluginBinding.applicationContext

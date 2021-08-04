@@ -21,7 +21,7 @@ class BlipClient extends Equatable {
   final Options options;
 
   ///
-  static const MethodChannel _channel = MethodChannel('blip_client');
+  static const MethodChannel _channel = MethodChannel('blip-client');
 
   ///
   static Future<String> get platformVersion async {
