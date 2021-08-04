@@ -8,7 +8,7 @@ import 'options.dart' show Options;
 export 'options.dart';
 
 const MethodChannel _channel = MethodChannel(
-  'plugins.blubybs2.com/blip_client',
+  'plugins.blu.bs2.com/blip-client',
 );
 
 /// An implementation of [BlipClientPlatform] that uses method channels.
