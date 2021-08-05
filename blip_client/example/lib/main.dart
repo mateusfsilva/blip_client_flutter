@@ -2,7 +2,7 @@ import 'package:blip_client/blip_client.dart';
 import 'package:flutter/material.dart';
 
 /// API key to use the Blip.
-const String apiKey = 'MyBlipKey=';
+const String apiKey = 'MyBlipKey';
 const String appBarBackgroundColor = '#3333CCFF';
 const String appBarForegroundColor = '#FFFFFFFF';
 
@@ -81,8 +81,8 @@ class _MyAppState extends State<MyApp> {
   void _openAuthenticatedUser() {
     const authConfig = AuthConfig(
       authType: AuthType.dev,
-      userIdentity: '9dd03fe2-35d8-4f6f-8139-a03b4317c1f9',
-      userPassword: 'b95acc5d1d037edb68d96a7bfe825cad',
+      userIdentity: 'deab09a4-d414-48be-952c-51732a4f2ad1',
+      userPassword: '6D071901727AEC1BA6D8E2497EF5B709',
     );
 
     var account = const Account();
@@ -111,8 +111,8 @@ class _MyAppState extends State<MyApp> {
       },
     );
     account = account.copyWith(isTemporary: false);
-    account = account.copyWith(password: '6d071901727aec1ba6d8e2497ef5b709');
-    account = account.copyWith(oldPassword: '4297f44b13955235245b2497399d7a93');
+    account = account.copyWith(password: '6D071901727AEC1BA6D8E2497EF5B709');
+    account = account.copyWith(oldPassword: '4297F44B13955235245B2497399D7A93');
     account = account.copyWith(inboxSize: 0);
     account = account.copyWith(allowGuestSender: false);
     account = account.copyWith(allowUnknownSender: false);
