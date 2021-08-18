@@ -4,3 +4,11 @@
 blip_client_platform_interface/.dart_tool/package_config_subset
 
 blip_client_platform_interface/.dart_tool/version
+
+blip_client/.idea/
+
+blip_client/android/.idea/
+
+blip_client_platform_interface/.dart_tool/
+
+blip_client_platform_interface/.packages

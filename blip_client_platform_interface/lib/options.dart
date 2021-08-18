@@ -14,7 +14,7 @@ export 'connection_data_config.dart';
 class Options extends Equatable {
   /// Constructor
   const Options({
-    @required this.authConfig,
+    required this.authConfig,
     this.account,
     this.connectionDataConfig,
     this.customCommonUrl,
@@ -28,38 +28,38 @@ class Options extends Equatable {
   final AuthConfig authConfig;
 
   /// Account data for user
-  final Account account;
+  final Account? account;
 
   /// Custom connection data configuration
-  final ConnectionDataConfig connectionDataConfig;
+  final ConnectionDataConfig? connectionDataConfig;
 
   /// Custom url to be used on blip chat common
-  final String customCommonUrl;
+  final String? customCommonUrl;
 
   /// Custom url to fetch blip chat widget lib
-  final String customWidgetUrl;
+  final String? customWidgetUrl;
 
   /// Title for BlipChat controller
-  final String windowTitle;
+  final String? windowTitle;
 
   /// Color of the AppBar
   /// Format hex #FFFFFF
-  final String appBarBackgroundColor;
+  final String? appBarBackgroundColor;
 
   /// Color of the AppBar Title
   /// Format hex #FFFFFF
-  final String appBarForegroundColor;
+  final String? appBarForegroundColor;
 
   /// Create a copy of the object instance.
   Options copyWith({
-    AuthConfig authConfig,
-    Account account,
-    ConnectionDataConfig connectionDataConfig,
-    String customCommonUrl,
-    String customWidgetUrl,
-    String windowTitle,
-    String appBarBackgroundColor,
-    String appBarForegroundColor,
+    AuthConfig? authConfig,
+    Account? account,
+    ConnectionDataConfig? connectionDataConfig,
+    String? customCommonUrl,
+    String? customWidgetUrl,
+    String? windowTitle,
+    String? appBarBackgroundColor,
+    String? appBarForegroundColor,
   }) =>
       Options(
         authConfig: authConfig ?? this.authConfig,
@@ -87,7 +87,7 @@ class Options extends Equatable {
       };
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         authConfig,
         account,
         connectionDataConfig,

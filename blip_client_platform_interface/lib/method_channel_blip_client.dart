@@ -8,7 +8,7 @@ import 'options.dart' show Options;
 export 'options.dart';
 
 const MethodChannel _channel = MethodChannel(
-  'plugins.blubybs2.com/blip_client',
+  'plugins.blu.bs2.com/blip-client',
 );
 
 /// An implementation of [BlipClientPlatform] that uses method channels.
@@ -16,8 +16,8 @@ class MethodChannelBlipClient extends BlipClientPlatform {
   ///
   @override
   Future<void> openBlipChat({
-    String apiKey,
-    Options options,
+    required String apiKey,
+    required Options options,
   }) {
     final data = json.encode(
       <String, dynamic>{
@@ -39,7 +39,7 @@ class MethodChannelBlipClient extends BlipClientPlatform {
   @override
   Future<String> getPlatformVersion() {
     return _channel.invokeMethod('getPlatformVersion').then(
-          (version) => version,
+          (version) => version as String,
         );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
@@ -6,10 +8,22 @@ import 'package:flutter/foundation.dart';
 class ConnectionDataConfig extends Equatable {
   /// Constructor
   const ConnectionDataConfig({
-    @required this.domain,
-    @required this.hostName,
-    @required this.port,
+    required this.domain,
+    required this.hostName,
+    required this.port,
   });
+
+  factory ConnectionDataConfig.fromMap(Map<String, dynamic> map) =>
+      ConnectionDataConfig(
+        domain: map['domain'] as String,
+        hostName: map['hostName'] as String,
+        port: map['port'] as String,
+      );
+
+  factory ConnectionDataConfig.fromJson(String source) =>
+      ConnectionDataConfig.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
 
   /// Domain name.
   final String domain;
@@ -27,8 +41,10 @@ class ConnectionDataConfig extends Equatable {
         'port': port,
       };
 
+  String toJson() => json.encode(toMap());
+
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         domain,
         hostName,
         port,

@@ -1,5 +1,6 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 /// Types of authentication for BlipChat users
 /// [AuthType.guest]: Default type, user will not be identified
@@ -16,10 +17,22 @@ enum AuthType {
 class AuthConfig extends Equatable {
   /// Constructor
   const AuthConfig({
-    @required this.authType,
-    this.userIdentity,
-    this.userPassword,
+    required this.authType,
+    required this.userIdentity,
+    required this.userPassword,
   });
+
+  factory AuthConfig.fromMap(Map<String, dynamic> map) {
+    return AuthConfig(
+      authType: AuthType.values[map['authType'] as int],
+      userIdentity: map['userIdentity'] as String,
+      userPassword: map['userPassword'] as String,
+    );
+  }
+
+  factory AuthConfig.fromJson(String source) => AuthConfig.fromMap(
+        json.decode(source) as Map<String, dynamic>,
+      );
 
   /// Authentication type.
   final AuthType authType;
@@ -31,14 +44,18 @@ class AuthConfig extends Equatable {
   final String userPassword;
 
   /// Return a Map representing the object.
-  Map<String, dynamic> toMap() => {
-        'authType': authType.index,
-        'userIdentity': userIdentity,
-        'userPassword': userPassword,
-      };
+  Map<String, dynamic> toMap() {
+    return {
+      'authType': authType.index,
+      'userIdentity': userIdentity,
+      'userPassword': userPassword,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         authType,
         userIdentity,
         userPassword,

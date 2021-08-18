@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'method_channel_blip_client.dart';
@@ -35,8 +34,8 @@ abstract class BlipClientPlatform extends PlatformInterface {
 
   ///
   Future<void> openBlipChat({
-    @required String apiKey,
-    @required Options options,
+    required String apiKey,
+    required Options options,
   }) {
     throw UnimplementedError('openBlipChat() has not been implemented.');
   }
