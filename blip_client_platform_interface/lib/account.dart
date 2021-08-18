@@ -15,10 +15,10 @@ enum Gender {
 class Account extends Equatable {
   /// Create a new object.
   const Account({
-    required this.fullName,
+    this.fullName,
     this.address,
     this.city,
-    required this.email,
+    this.email,
     this.phoneNumber,
     this.photoUri,
     this.cellPhoneNumber,
@@ -27,7 +27,7 @@ class Account extends Equatable {
     this.culture,
     this.extras,
     this.isTemporary,
-    required this.password,
+    this.password,
     this.oldPassword,
     this.inboxSize,
     this.allowGuestSender,
@@ -61,7 +61,7 @@ class Account extends Equatable {
       );
 
   /// The user full name.
-  final String fullName;
+  final String? fullName;
 
   /// The user address.
   final String? address;
@@ -70,7 +70,7 @@ class Account extends Equatable {
   final String? city;
 
   /// The user e-mail address.
-  final String email;
+  final String? email;
 
   /// The user phone number.
   final String? phoneNumber;
@@ -99,7 +99,7 @@ class Account extends Equatable {
 
   /// Base64 representation of the account password.
   /// Only valid on set commands during the account creation or update.
-  final String password;
+  final String? password;
 
   /// Base64 representation of the account password.
   /// Only valid on set commands during the account password update.

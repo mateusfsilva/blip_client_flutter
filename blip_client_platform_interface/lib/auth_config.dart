@@ -18,8 +18,8 @@ class AuthConfig extends Equatable {
   /// Constructor
   const AuthConfig({
     required this.authType,
-    required this.userIdentity,
-    required this.userPassword,
+    this.userIdentity,
+    this.userPassword,
   });
 
   factory AuthConfig.fromMap(Map<String, dynamic> map) {
@@ -38,10 +38,10 @@ class AuthConfig extends Equatable {
   final AuthType authType;
 
   /// User id.
-  final String userIdentity;
+  final String? userIdentity;
 
   /// User password.
-  final String userPassword;
+  final String? userPassword;
 
   /// Return a Map representing the object.
   Map<String, dynamic> toMap() {
