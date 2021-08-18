@@ -1,23 +1,25 @@
-group 'com.blubybs2.blip_client'
+group 'com.bs2.blu.blip-client'
+
 version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.3.50'
+
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        maven {
+            url 'https://blubybs2.jfrog.io/artifactory/blu-libs-release-local'
+            credentials {
+                username 'consumer'
+                password 'AP4Nx2aCdjs63onG14xymWa2J6q'
+            }
+        }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
-rootProject.allprojects {
-    repositories {
-        google()
-        jcenter()
     }
 }
 
@@ -39,8 +41,8 @@ android {
 }
 
 dependencies {
-    implementation 'net.take:blip-chat:2.1.24'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.code.gson:gson:2.8.7'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'net.take:blip-chat:2.2.2-BLU'
 }

@@ -22,7 +22,7 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
   }
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "plugins.blubybs2.com/blip_client", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "plugins.blu.bs2.com/blip-client", binaryMessenger: registrar.messenger())
     let instance = SwiftBlipClientPlugin()
 
     registrar.addMethodCallDelegate(instance, channel: channel)

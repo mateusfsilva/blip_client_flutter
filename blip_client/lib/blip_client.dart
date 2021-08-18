@@ -10,8 +10,8 @@ export 'package:blip_client_platform_interface/options.dart';
 class BlipClient extends Equatable {
   ///
   const BlipClient({
-    this.apiKey,
-    this.options,
+    required this.apiKey,
+    required this.options,
   });
 
   ///
@@ -21,7 +21,7 @@ class BlipClient extends Equatable {
   final Options options;
 
   ///
-  static const MethodChannel _channel = MethodChannel('blip_client');
+  static const MethodChannel _channel = MethodChannel('blip-client');
 
   ///
   static Future<String> get platformVersion async {
