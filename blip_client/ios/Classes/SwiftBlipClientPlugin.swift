@@ -55,14 +55,38 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
     navigationController = UINavigationController(rootViewController: viewController!)
     navigationController!.modalPresentationStyle = .fullScreen
 
-    navigationController!.navigationBar.barTintColor = _backgroundColor
-    navigationController!.navigationBar.isTranslucent = false
-
-    navigationController!.navigationBar.tintColor = _foregroundColor
-    navigationController!.navigationBar.titleTextAttributes = [
+    let textAttributes = [
       NSAttributedString.Key.backgroundColor: _backgroundColor,
       NSAttributedString.Key.foregroundColor: _foregroundColor
     ]
+
+    if #available(iOS 13, *) {
+      let buttonAppearance = UIBarButtonItemAppearance()
+      buttonAppearance.normal.titleTextAttributes = textAttributes
+      buttonAppearance.highlighted.titleTextAttributes = textAttributes
+      buttonAppearance.focused.titleTextAttributes = textAttributes
+
+      let appearance = UINavigationBarAppearance()
+      appearance.configureWithOpaqueBackground()
+      appearance.backgroundColor = _backgroundColor
+      appearance.titleTextAttributes = textAttributes
+      appearance.largeTitleTextAttributes = textAttributes
+      appearance.buttonAppearance = buttonAppearance
+      appearance.backButtonAppearance = buttonAppearance
+      appearance.doneButtonAppearance = buttonAppearance
+
+      UINavigationBar.appearance().tintColor = _foregroundColor
+      navigationController!.navigationBar.standardAppearance = appearance
+      navigationController!.navigationBar.scrollEdgeAppearance = appearance
+
+      // UIToolbar.appearance().tintColor = _foregroundColor
+    } else {
+      navigationController!.navigationBar.barTintColor = _backgroundColor
+      navigationController!.navigationBar.isTranslucent = false
+
+      navigationController!.navigationBar.tintColor = _foregroundColor
+      navigationController!.navigationBar.titleTextAttributes = textAttributes
+    }
 
     if let window = UIApplication.shared.windows.first, let rootViewController = window.rootViewController {
       rootViewController.present(navigationController!, animated: true, completion: nil)
