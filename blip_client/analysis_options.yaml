@@ -10,3 +10,4 @@ linter:
     sort_constructors_first: true
     always_put_control_body_on_new_line: true
     sort_pub_dependencies: false
+    always_use_package_imports: false
