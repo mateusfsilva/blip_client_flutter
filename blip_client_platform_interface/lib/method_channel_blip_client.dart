@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import 'blip_client_platform_interface.dart';
-import 'options.dart' show Options;
 
 export 'options.dart';
 

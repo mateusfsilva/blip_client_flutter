@@ -1,7 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'method_channel_blip_client.dart';
-import 'options.dart';
 
 export 'options.dart';
 
