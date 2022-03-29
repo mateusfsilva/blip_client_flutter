@@ -23,6 +23,8 @@ class Account extends Equatable {
     this.photoUri,
     this.cellPhoneNumber,
     this.gender,
+    this.group,
+    this.taxDocument,
     this.timezone,
     this.culture,
     this.extras,
@@ -47,6 +49,8 @@ class Account extends Equatable {
         cellPhoneNumber: map['cellPhoneNumber'] as String,
         gender:
             map['gender'] != null ? Gender.values[map['gender'] as int] : null,
+        group: map['group'] as String,
+        taxDocument: map['taxDocument'] as String,
         timezone: map['timezone'] as int,
         culture: map['culture'] as String,
         extras: Map<String, String>.from(map['extras'] as Map<String, dynamic>),
@@ -83,6 +87,12 @@ class Account extends Equatable {
 
   /// The user gender (male/female).
   final Gender? gender;
+
+  /// The description of a contact group.
+  final String? group;
+
+  /// The tax document number.
+  final String? taxDocument;
 
   /// The user timezone relative to GMT.
   final int? timezone;
@@ -135,6 +145,8 @@ class Account extends Equatable {
         'photoUri': photoUri?.toString(),
         'cellPhoneNumber': cellPhoneNumber,
         'gender': gender?.index,
+        'group': group,
+        'taxDocument': taxDocument,
         'timezone': timezone,
         'culture': culture,
         'extras': extras,
@@ -158,6 +170,8 @@ class Account extends Equatable {
     Uri? photoUri,
     String? cellPhoneNumber,
     Gender? gender,
+    String? group,
+    String? taxDocument,
     int? timezone,
     String? culture,
     Map<String, String>? extras,
@@ -179,6 +193,8 @@ class Account extends Equatable {
         photoUri: photoUri ?? this.photoUri,
         cellPhoneNumber: cellPhoneNumber ?? this.cellPhoneNumber,
         gender: gender ?? this.gender,
+        group: group ?? this.group,
+        taxDocument: taxDocument ?? this.taxDocument,
         timezone: timezone ?? this.timezone,
         culture: culture ?? this.culture,
         extras: extras ?? this.extras,
@@ -203,6 +219,8 @@ class Account extends Equatable {
         photoUri,
         cellPhoneNumber,
         gender,
+        group,
+        taxDocument,
         timezone,
         culture,
         extras,
