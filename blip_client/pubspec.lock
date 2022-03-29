@@ -12,8 +12,8 @@ packages:
     dependency: "direct main"
     description:
       path: blip_client_platform_interface
-      ref: "1a2fce1d45d50a652ae0c0a08c19942993f4ed81"
-      resolved-ref: "1a2fce1d45d50a652ae0c0a08c19942993f4ed81"
+      ref: e8dff8af84b9d1840119effdc0659dd07af7fde4
+      resolved-ref: e8dff8af84b9d1840119effdc0659dd07af7fde4
       url: "https://github.com/mateusfsilva/blip_client_flutter.git"
     source: git
     version: "0.0.4"
