@@ -2,7 +2,8 @@ import 'package:blip_client/blip_client.dart';
 import 'package:flutter/material.dart';
 
 /// API key to use the Blip.
-const String apiKey = 'MyBlipKey';
+const String apiKey =
+    'Ymx1MToyYzUwNGQ3YS0xMDRmLTRiYTAtYjM0Yi05ODZmNGZlNjNhMGU=';
 const String appBarBackgroundColor = '#3333CCFF';
 const String appBarForegroundColor = '#FFFFFFFF';
 
@@ -111,8 +112,6 @@ class _MyAppState extends State<MyApp> {
       },
     );
     account = account.copyWith(isTemporary: false);
-    account = account.copyWith(password: '6D071901727AEC1BA6D8E2497EF5B709');
-    account = account.copyWith(oldPassword: '4297F44B13955235245B2497399D7A93');
     account = account.copyWith(inboxSize: 0);
     account = account.copyWith(allowGuestSender: false);
     account = account.copyWith(allowUnknownSender: false);
