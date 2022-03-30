@@ -9,16 +9,19 @@ buildscript {
         google()
         mavenCentral()
         maven {
-            url 'https://blubybs2.jfrog.io/artifactory/blu-libs-release-local'
-            credentials {
-                username 'consumer'
-                password 'AP4Nx2aCdjs63onG14xymWa2J6q'
-            }
+            url "https://packagecloud.io/toolsBluByBS2/blubybs2/maven2"
         }
+        // maven {
+        //     url 'https://blubybs2.jfrog.io/artifactory/blu-libs-release-local'
+        //     credentials {
+        //         username 'consumer'
+        //         password 'AP4Nx2aCdjs63onG14xymWa2J6q'
+        //     }
+        // }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.4'
+        classpath 'com.android.tools.build:gradle:7.1.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -44,5 +47,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'net.take:blip-chat:2.2.2-BLU'
+    implementation 'net.take:blip-chat:2.2.3-BLU'
 }
