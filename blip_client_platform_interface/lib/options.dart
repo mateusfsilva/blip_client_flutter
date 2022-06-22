@@ -20,6 +20,9 @@ class Options extends Equatable {
     this.customCommonUrl,
     this.customWidgetUrl,
     this.windowTitle,
+    required this.sendMessage,
+    this.initialMessage,
+    this.customMessageMetadata,
     this.appBarBackgroundColor,
     this.appBarForegroundColor,
   });
@@ -42,6 +45,15 @@ class Options extends Equatable {
   /// Title for BlipChat controller
   final String? windowTitle;
 
+  /// Send an initial message?
+  final bool sendMessage;
+
+  /// Initial message to send when opening the chat
+  final String? initialMessage;
+
+  /// Metadata to send on opening the chat
+  final Map<String, String>? customMessageMetadata;
+
   /// Color of the AppBar
   /// Format hex #FFFFFF
   final String? appBarBackgroundColor;
@@ -58,6 +70,9 @@ class Options extends Equatable {
     String? customCommonUrl,
     String? customWidgetUrl,
     String? windowTitle,
+    bool? sendMessage,
+    String? initialMessage,
+    Map<String, String>? customMessageMetadata,
     String? appBarBackgroundColor,
     String? appBarForegroundColor,
   }) =>
@@ -68,6 +83,10 @@ class Options extends Equatable {
         customCommonUrl: customCommonUrl ?? this.customCommonUrl,
         customWidgetUrl: customWidgetUrl ?? this.customWidgetUrl,
         windowTitle: windowTitle ?? this.windowTitle,
+        sendMessage: sendMessage ?? this.sendMessage,
+        initialMessage: initialMessage ?? this.initialMessage,
+        customMessageMetadata:
+            customMessageMetadata ?? this.customMessageMetadata,
         appBarBackgroundColor:
             appBarBackgroundColor ?? this.appBarBackgroundColor,
         appBarForegroundColor:
@@ -82,6 +101,9 @@ class Options extends Equatable {
         'customCommonUrl': customCommonUrl,
         'customWidgetUrl': customWidgetUrl,
         'windowTitle': windowTitle,
+        'sendMessage': sendMessage,
+        'initialMessage': initialMessage,
+        'customMessageMetadata': customMessageMetadata,
         'appBarBackgroundColor': appBarBackgroundColor,
         'appBarForegroundColor': appBarForegroundColor,
       };
@@ -94,6 +116,9 @@ class Options extends Equatable {
         customCommonUrl,
         customWidgetUrl,
         windowTitle,
+        sendMessage,
+        initialMessage,
+        customMessageMetadata,
         appBarBackgroundColor,
         appBarForegroundColor,
       ];

@@ -2,7 +2,7 @@ name: blip_client_platform_interface
 description: A common platform interface for the blip_client plugin.
 repository: https://github.com/mateusfsilva
 issue_tracker: https://github.com/mateusfsilva/<repository>/issues
-version: 0.0.4
+version: 0.0.5
 
 dependencies:
   flutter:
