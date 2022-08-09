@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
+import 'model_mixin.dart';
+
 /// Connection data configuration for customization
 @immutable
-class ConnectionDataConfig extends Equatable {
+class ConnectionDataConfig extends Equatable with ModelMixin {
   /// Constructor
   const ConnectionDataConfig({
     required this.domain,
@@ -51,5 +53,9 @@ class ConnectionDataConfig extends Equatable {
       ];
 
   @override
-  bool get stringify => true;
+  List<String> get propsNames => [
+        'domain',
+        'hostName',
+        'port',
+      ];
 }

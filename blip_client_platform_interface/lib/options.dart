@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'account.dart';
 import 'auth_config.dart';
 import 'connection_data_config.dart';
+import 'model_mixin.dart';
 
 export 'account.dart';
 export 'auth_config.dart';
@@ -11,7 +12,7 @@ export 'connection_data_config.dart';
 
 /// Options object to customize the BlipChat
 @immutable
-class Options extends Equatable {
+class Options extends Equatable with ModelMixin {
   /// Constructor
   const Options({
     required this.authConfig,
@@ -22,6 +23,10 @@ class Options extends Equatable {
     this.windowTitle,
     required this.sendMessage,
     this.initialMessage,
+    required this.sendHiddenMessage,
+    this.hiddenMessage,
+    required this.sendChatState,
+    this.chatState,
     this.customMessageMetadata,
     this.appBarBackgroundColor,
     this.appBarForegroundColor,
@@ -51,6 +56,18 @@ class Options extends Equatable {
   /// Initial message to send when opening the chat
   final String? initialMessage;
 
+  /// Send a hidden message when opening the chat
+  final bool sendHiddenMessage;
+
+  /// Hidden message to send on opening the chat
+  final String? hiddenMessage;
+
+  /// Send a chat state when opening the chat
+  final bool sendChatState;
+
+  /// State to send on opening chat
+  final String? chatState;
+
   /// Metadata to send on opening the chat
   final Map<String, String>? customMessageMetadata;
 
@@ -72,6 +89,10 @@ class Options extends Equatable {
     String? windowTitle,
     bool? sendMessage,
     String? initialMessage,
+    bool? sendHiddenMessage,
+    String? hiddenMessage,
+    bool? sendChatState,
+    String? chatState,
     Map<String, String>? customMessageMetadata,
     String? appBarBackgroundColor,
     String? appBarForegroundColor,
@@ -85,6 +106,10 @@ class Options extends Equatable {
         windowTitle: windowTitle ?? this.windowTitle,
         sendMessage: sendMessage ?? this.sendMessage,
         initialMessage: initialMessage ?? this.initialMessage,
+        sendHiddenMessage: sendHiddenMessage ?? this.sendHiddenMessage,
+        hiddenMessage: hiddenMessage ?? this.hiddenMessage,
+        sendChatState: sendChatState ?? this.sendChatState,
+        chatState: chatState ?? this.chatState,
         customMessageMetadata:
             customMessageMetadata ?? this.customMessageMetadata,
         appBarBackgroundColor:
@@ -103,6 +128,10 @@ class Options extends Equatable {
         'windowTitle': windowTitle,
         'sendMessage': sendMessage,
         'initialMessage': initialMessage,
+        'sendHiddenMessage': sendHiddenMessage,
+        'hiddenMessage': hiddenMessage,
+        'sendChatState': sendChatState,
+        'chatState': chatState,
         'customMessageMetadata': customMessageMetadata,
         'appBarBackgroundColor': appBarBackgroundColor,
         'appBarForegroundColor': appBarForegroundColor,
@@ -118,11 +147,31 @@ class Options extends Equatable {
         windowTitle,
         sendMessage,
         initialMessage,
+        sendHiddenMessage,
+        hiddenMessage,
+        sendChatState,
+        chatState,
         customMessageMetadata,
         appBarBackgroundColor,
         appBarForegroundColor,
       ];
 
   @override
-  bool get stringify => true;
+  List<String> get propsNames => [
+        'authConfig',
+        'account',
+        'connectionDataConfig',
+        'customCommonUrl',
+        'customWidgetUrl',
+        'windowTitle',
+        'sendMessage',
+        'initialMessage',
+        'sendHiddenMessage',
+        'hiddenMessage',
+        'sendChatState',
+        'chatState',
+        'customMessageMetadata',
+        'appBarBackgroundColor',
+        'appBarForegroundColor',
+      ];
 }

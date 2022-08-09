@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
+import 'model_mixin.dart';
+
 /// User gender
 enum Gender {
   /// Gender Male
@@ -12,7 +14,7 @@ enum Gender {
 
 /// Represents an user account information.
 @immutable
-class Account extends Equatable {
+class Account extends Equatable with ModelMixin {
   /// Create a new object.
   const Account({
     this.fullName,
@@ -235,5 +237,27 @@ class Account extends Equatable {
       ];
 
   @override
-  bool get stringify => true;
+  List<String> get propsNames => [
+        'fullName',
+        'address',
+        'city',
+        'email',
+        'phoneNumber',
+        'photoUri',
+        'cellPhoneNumber',
+        'gender',
+        'group',
+        'taxDocument',
+        'timezone',
+        'culture',
+        'extras',
+        'isTemporary',
+        'password',
+        'oldPassword',
+        'inboxSize',
+        'allowGuestSender',
+        'allowUnknownSender',
+        'storeMessageContent',
+        'encryptMessageContent',
+      ];
 }

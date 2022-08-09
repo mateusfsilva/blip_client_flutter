@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 import 'blip_client_platform_interface.dart';
 
+export 'model_mixin.dart';
 export 'options.dart';
 
 const MethodChannel _channel = MethodChannel(
