@@ -2,7 +2,8 @@ name: blip_client
 description: A new flutter plugin project.
 repository: https://github.com/mateusfsilva
 issue_tracker: https://github.com/mateusfsilva/<repository>/issues
-version: 0.0.4
+publish_to: none
+version: 0.0.6
 
 dependencies:
   flutter:
@@ -13,18 +14,18 @@ dependencies:
   blip_client_platform_interface:
     git:
       url: https://github.com/mateusfsilva/blip_client_flutter.git
-      ref: e8dff8af84b9d1840119effdc0659dd07af7fde4
+      ref: 53d6ad99a6e73183eef8c1e18d3f29aef9e223a8
       path: blip_client_platform_interface
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  lint: ^1.8.2
+  lint: ^1.10.0
 
 environment:
-  sdk: ">=2.13.0 <3.0.0"
-  flutter: ">=1.22.5"
+  sdk: ">=2.17.6 <3.0.0"
+  flutter: ">=3.0.5"
 
 flutter:
   plugin:

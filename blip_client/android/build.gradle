@@ -47,5 +47,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.code.gson:gson:2.8.7'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'net.take:blip-chat:2.2.3-BLU'
+    implementation 'net.take:blip-chat:2.3.0-BLU'
 }

@@ -14,16 +14,16 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.4"
+    version: "0.0.6"
   blip_client_platform_interface:
     dependency: transitive
     description:
       path: blip_client_platform_interface
-      ref: e8dff8af84b9d1840119effdc0659dd07af7fde4
-      resolved-ref: e8dff8af84b9d1840119effdc0659dd07af7fde4
+      ref: "53d6ad99a6e73183eef8c1e18d3f29aef9e223a8"
+      resolved-ref: "53d6ad99a6e73183eef8c1e18d3f29aef9e223a8"
       url: "https://github.com/mateusfsilva/blip_client_flutter.git"
     source: git
-    version: "0.0.4"
+    version: "0.0.6"
   boolean_selector:
     dependency: transitive
     description:
@@ -58,7 +58,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.15.0"
+    version: "1.16.0"
   equatable:
     dependency: transitive
     description:
@@ -72,7 +72,7 @@ packages:
       name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -89,7 +89,7 @@ packages:
       name: lint
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.2"
+    version: "1.10.0"
   matcher:
     dependency: transitive
     description:
@@ -103,7 +103,7 @@ packages:
       name: material_color_utilities
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.3"
+    version: "0.1.4"
   meta:
     dependency: transitive
     description:
@@ -117,7 +117,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
+    version: "1.8.1"
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -136,7 +136,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.2"
   stack_trace:
     dependency: transitive
     description:
@@ -171,21 +171,14 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.8"
-  typed_data:
-    dependency: transitive
-    description:
-      name: typed_data
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.0"
+    version: "0.4.9"
   vector_math:
     dependency: transitive
     description:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
 sdks:
-  dart: ">=2.15.0-7.0.dev <3.0.0"
-  flutter: ">=1.22.5"
+  dart: ">=2.17.6 <3.0.0"
+  flutter: ">=3.0.5"

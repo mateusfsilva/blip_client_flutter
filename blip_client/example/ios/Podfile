@@ -31,7 +31,8 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
   
-  pod "BlipChat"
+  # pod "BlipChat", :git => 'https://github.com/mateusfsilva/blip-chat-ios.git', :branch => 'blu'
+  pod "BlipChat", :git => 'https://github.com/mateusfsilva/blip-chat-ios.git', :commit => '863893e5dad91e3a73a3b18e01d3b88e8afe2d44'
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end

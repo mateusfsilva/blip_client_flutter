@@ -149,12 +149,28 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
       }
     }
 
+    if let group = _account?["group"] as? String {
+      account.group = group
+    }
+
+    if let taxDocument = _account?["taxDocument"] as? String {
+      account.taxDocument = taxDocument
+    }
+
+    if let timezone = _account?["timezone"] as? Int {
+      account.timezone = NSNumber(value: timezone)
+    }
+
     if let culture = _account?["culture"] as? String {
       account.culture = culture
     }
 
     if let extras = _account?["extras"] as? [String: String] {
       account.extras = extras
+    }
+
+    if let isTemporary = _account?["isTemporary"] as? Bool {
+      account.isTemporary = isTemporary
     }
 
     if let password = _account?["password"] as? String {
@@ -165,8 +181,8 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
       account.oldPassword = oldPassword
     }
 
-    if let isTemporary = _account?["isTemporary"] as? Bool {
-      account.isTemporary = isTemporary
+    if let inboxSize = _account?["inboxSize"] as? Int {
+      account.inboxSize = NSNumber(value: inboxSize)
     }
 
     if let allowGuestSender = _account?["allowGuestSender"] as? Bool {
@@ -193,6 +209,24 @@ public class SwiftBlipClientPlugin: NSObject, FlutterPlugin {
 
     if let customCommonUrl = _options["customCommonUrl"] as? String {
       blipOptions.customCommonUrl = customCommonUrl
+    }
+
+    if let customWidgetUrl = _options["customWidgetUrl"] as? String {
+      blipOptions.customWidgetUrl = customWidgetUrl
+    }
+
+    if let sendMessage = _options["sendMessage"] as? Bool {
+      blipOptions.sendMessage = sendMessage
+    } else {
+      blipOptions.sendMessage = false
+    }
+
+    if let initialMessage = _options["initialMessage"] as? String {
+      blipOptions.initialMessage = initialMessage
+    }
+
+    if let customMessageMetadata = _options["customMessageMetadata"] as? [String: String] {
+      blipOptions.customMessageMetadata = customMessageMetadata
     }
 
     // UINavigationBar Color

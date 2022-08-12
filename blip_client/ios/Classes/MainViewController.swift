@@ -54,11 +54,11 @@ class MainViewController: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
 
-    if (chatWasOpened) {
-      self.presentingViewController?.dismiss(animated: true, completion: nil)
-    } else {
-      chatWasOpened = true
-    }
+    // if (chatWasOpened) {
+    //   self.presentingViewController?.dismiss(animated: true, completion: nil)
+    // } else {
+    //   chatWasOpened = true
+    // }
   }
 
   override func viewDidDisappear(_ animated: Bool) {

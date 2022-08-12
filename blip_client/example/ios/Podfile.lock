@@ -1,30 +1,34 @@
 PODS:
-  - blip_client (0.0.1):
+  - blip_client (0.0.2):
     - BlipChat
     - Flutter
-  - BlipChat (2.2.4)
+  - BlipChat (2.2.6)
   - Flutter (1.0.0)
 
 DEPENDENCIES:
   - blip_client (from `.symlinks/plugins/blip_client/ios`)
-  - BlipChat
+  - BlipChat (from `https://github.com/mateusfsilva/blip-chat-ios.git`, commit `863893e5dad91e3a73a3b18e01d3b88e8afe2d44`)
   - Flutter (from `Flutter`)
-
-SPEC REPOS:
-  trunk:
-    - BlipChat
 
 EXTERNAL SOURCES:
   blip_client:
     :path: ".symlinks/plugins/blip_client/ios"
+  BlipChat:
+    :commit: 863893e5dad91e3a73a3b18e01d3b88e8afe2d44
+    :git: https://github.com/mateusfsilva/blip-chat-ios.git
   Flutter:
     :path: Flutter
 
+CHECKOUT OPTIONS:
+  BlipChat:
+    :commit: 863893e5dad91e3a73a3b18e01d3b88e8afe2d44
+    :git: https://github.com/mateusfsilva/blip-chat-ios.git
+
 SPEC CHECKSUMS:
-  blip_client: bc317e6cee3af7c1d8b54ed47ed8def2796da4f2
-  BlipChat: 6765efcbbbf7586358977eddf384fdfb62c70812
+  blip_client: c4aad17833cc350df4d2d8820c65f6450bf7eb89
+  BlipChat: 2cf9d3632e6d6e99ba1433f6ed5b06620ea0478a
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
 
-PODFILE CHECKSUM: fa5875cd7d2503ccbac33b136151a0918c24e5a4
+PODFILE CHECKSUM: 210eb4b38f458b3b28a0306c5c6b451cc2b89665
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
